@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<Element id="1" key="sciana">
+	<Desctiption>Dziwna sciana stoi przed toba, odpada z niej tynk, obok przebiega dziurawa rynna</Desctiption>
+	
+	<ActionsReactions>
+		<ActionReaction>
+			<Action>przygladnij sie</Action>
+			<Reaction>
+				<Text>to dziwna sciana</Text>
+			</Reaction>
+		</ActionReaction>
+		<ActionReaction>
+			<Action>Dotknij</Action>
+			<Reaction>
+				<Text>Faktura sciany przyprawia Cie o dreszcze</Text>
+			</Reaction>
+		</ActionReaction>
+	</ActionsReactions>
+	
+	<PossibleCommands>
+		<Text>przygladnij sie sciana</Text>
+		<Text>dotknij sciana</Text>
+	</PossibleCommands>
+</Element>

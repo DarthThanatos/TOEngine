@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<Element id="1" key="mentor">
+	<Desctiption>Dziwny starzec stoi przed Toba, wpatrujac sie w Cb ze smutkiem. Podrapuje sie za uchem. Ma etykietke $Mentor$ przypieta do piersi</Desctiption>
+
+	<ActionsReactions>
+		<ActionReaction>
+			<Action>przygladnij</Action>
+			<Reaction>To dziwny starzec z etykietka $Mentor$</Reaction>
+		</ActionReaction>
+		<ActionReaction>
+			<Action>dotknij</Action>
+			<Reaction>Starzec teleportuje sie na drugi koniec sali, unikajac Twojej reki</Reaction>
+		</ActionReaction>
+		<ActionReaction>
+			<Action>porozmawiaj</Action>
+			<Reaction>
+				<Text>
+					Witaj w swiecie Engine. Jestem Twoim przewodnikiem. Jesli chcesz sie czegokolwiek nauczyc, to przetestuj mechanike gry. Najsampierw wpisz ktores z polecen:
+					$dotknij mentor$ by wywolac reakcje, $porozmawiaj mentor$ by zainicjowac ten dialog. Napisz $powiedz dzien dobry mentor$ by uzyskac odpowiedz. Napisz $wytlumacz co robic mentor$,
+					 by uzyskac odpowiedz itd.
+				</Text>
+			</Reaction>
+		</ActionReaction>
+		<ActionReaction>
+			<Action>dzien dobry</Action>
+			<Reaction><Text>Witaj</Text></Reaction>
+		</ActionReaction>
+		<ActionReaction>
+			<Action>wytlumacz co robic</Action>
+			<Reaction>
+				<Text>
+					Jesli napiszesz w konsoli $idz wschod$ to zmienisz swoje polozenie
+				</Text>
+			</Reaction>
+		</ActionReaction>
+		<ActionReaction>
+			<Action>wytlumacz gdzie jestem</Action>
+			<Reaction>
+				<Text>
+					Jestes w wirtualnym swiecie Engine
+				</Text>
+			</Reaction>
+		</ActionReaction>
+		<ActionReaction>
+			<Action>przywitaj</Action>
+			<Reaction>
+				<Text>Starzec kiwa glowa z szacunkiem. $Witaj$, odpowiada</Text>
+			</Reaction>
+		</ActionReaction>
+	</ActionsReactions>
+	<PossibleCommands>
+		<Text>przygladnij mentor</Text>
+		<Text>dotknij mentor</Text>
+		<Text>przywitaj mentor</Text>
+		<Text>porozmawiaj mentor</Text>
+		<Text>dzien dobry mentor</Text>
+		<Text>wytlumacz co robic mentor</Text>
+		<Text>wytlumacz gdzie jestem mentor</Text>
+	</PossibleCommands>
+</Element>

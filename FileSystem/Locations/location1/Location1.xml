@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<Location id="1" key="location1">
+   <Description>location1</Description>
+   <Locations>
+	   <Location id="0">
+	       <Direction>East</Direction>
+	       <File>FileSystem\Locations\root\root.xml</File>
+	   </Location>
+   </Locations>
+   <Elements></Elements>
+	<NPCs></NPCs>
+	
+	<ActionsReactions>
+		<ActionReaction>
+			<Action>help</Action>
+			<Reaction>				
+				<Method>
+					<Name>ShowHelp</Name>
+					<Arg>arg</Arg>
+				</Method>
+			</Reaction>
+		</ActionReaction>
+		<ActionReaction>
+			<Action>idz wschod</Action>
+			<Reaction>
+				<Method>
+					<Name>ChangeLocation</Name>
+					<Arg>East</Arg>
+				</Method>
+			</Reaction>
+		</ActionReaction>
+	</ActionsReactions>
+	
+	<PossibleCommands>
+		<Text>help location1</Text>
+		<Text>idz wschod z location1</Text>
+	</PossibleCommands>
+</Location>

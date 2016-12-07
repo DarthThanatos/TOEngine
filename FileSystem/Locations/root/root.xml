@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<Location id="0" key="root">
+   <Description>Znajdujesz sie w poczatkowej lokacji zwanej root. Wpisz $help me root$ zeby wyswietlic pomoc </Description>
+   <Locations>
+	   <Location id="1">
+	       <Direction>West</Direction>
+	       <File>FileSystem//Locations//location1//Location1.xml</File>
+	   </Location>
+   </Locations>
+   <Elements>
+	   <StaticElement>
+	   		<File>FileSystem//Locations//root//Elements//Wall.xml</File>
+	   </StaticElement>
+	</Elements>
+	<NPCs>
+		<NPC>
+			<File>FileSystem//Locations//root//NPCs//Mentor.xml</File>
+		</NPC>
+	</NPCs>
+	<ActionsReactions>
+		<ActionReaction>
+			<Action>help me</Action>
+			<Reaction>
+				<Method>
+					<Name>ShowHelp</Name>
+					<Arg></Arg>
+				</Method>
+			</Reaction>
+		</ActionReaction>
+		<ActionReaction>
+			<Action>idz zachod z</Action>
+			<Reaction>
+				<Method>
+					<Name>ChangeLocation</Name>
+					<Arg>West</Arg>
+				</Method>
+			</Reaction>
+		</ActionReaction>
+		<ActionReaction>
+			<Action>krzyknij w</Action>
+			<Reaction>
+				<Method>
+					<Name>Communicate</Name>
+					<Arg>Odpowiada Ci glucha cisza</Arg>
+				</Method>
+				<Text></Text>
+			</Reaction>
+		</ActionReaction>
+	</ActionsReactions>
+	
+	<PossibleCommands>
+		<Text>help me root</Text>
+		<Text>idz zachod z root</Text>
+		<Text>krzyknij w root</Text>
+	</PossibleCommands>
+</Location>
