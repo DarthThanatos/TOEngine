@@ -12,11 +12,6 @@ public class Person extends NPC {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public InteractionResult execute(Hero hero, String key, String command) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 
 }

@@ -22,7 +22,7 @@ public abstract class Location extends IterableChild{
 	private List<Hero> heroes;
 	private Location north, west, east, south;
 	protected List<Element> elements;
-	private List<NPC> npcs;
+	protected List<NPC> npcs;
 	protected List<IterableChild> children;
 	private Document doc;
 	
@@ -32,6 +32,7 @@ public abstract class Location extends IterableChild{
 		this.heroes = new ArrayList();
 		this.elements = new ArrayList();
 		this.children = new ArrayList();
+		this.npcs = new ArrayList();
 	}
 	
 	public Location getNorth(){
@@ -96,9 +97,6 @@ public abstract class Location extends IterableChild{
 			res += child.getDescription() + "\n";
 		}
 		res += "Possible commands:\n";
-		//for (String command : possibleCommands){
-		//	res += "	->" + command + "\n";
-		//}
 		res += getAllPossibleCommands();
 		res += "Znajduja sie tutaj:\n"; 
 		for (Hero hero:heroes) res +=  "	->" + hero.getName() + ", " +hero.getDescription() + "\n";

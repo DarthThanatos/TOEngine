@@ -8,6 +8,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 import iterable.IterableChild;
 import map.element.StaticElement;
+import map.npc.Person;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -32,9 +33,30 @@ public class StandardLocation extends Location{
 
 	@Override
 	public void addNPCs(NodeList npcNodeList) {
-		
+		NodeList personsNodeList = ((Element)npcNodeList.item(0)).getElementsByTagName("Person");
+		addPersons(personsNodeList);
+		//... and handle rest of the types of npcs by fetching them by tagName 
 	}
 
+	public void addPersons(NodeList personsNodeList){
+		try{
+	        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+	        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			for (int i = 0; i < personsNodeList.getLength(); i++){
+		        Element staticElementNode = (Element)personsNodeList.item(i);
+		        String filename = staticElementNode.getElementsByTagName("File").item(0).getTextContent();
+		        File inputFile = new File(filename);
+		        Document doc = dBuilder.parse(inputFile);
+		        doc.getDocumentElement().normalize();
+		        Person person = new Person(doc);
+		        npcs.add(person);
+		        children.add(person);
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
 	@Override
 	public void addNPC(String npcFileName) {
 		

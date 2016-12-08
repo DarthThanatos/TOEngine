@@ -13,9 +13,9 @@
 	   </StaticElement>
 	</Elements>
 	<NPCs>
-		<NPC>
+		<Person>
 			<File>FileSystem//Locations//root//NPCs//Mentor.xml</File>
-		</NPC>
+		</Person>
 	</NPCs>
 	<ActionsReactions>
 		<ActionReaction>
