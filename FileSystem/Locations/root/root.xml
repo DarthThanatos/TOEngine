@@ -28,29 +28,30 @@
 			</Reaction>
 		</ActionReaction>
 		<ActionReaction>
-			<Action>idz zachod z</Action>
-			<Reaction>
-				<Method>
-					<Name>ChangeLocation</Name>
-					<Arg>West</Arg>
-				</Method>
-			</Reaction>
-		</ActionReaction>
-		<ActionReaction>
 			<Action>krzyknij w</Action>
 			<Reaction>
 				<Method>
 					<Name>Communicate</Name>
 					<Arg>Odpowiada Ci glucha cisza</Arg>
 				</Method>
-				<Text></Text>
 			</Reaction>
 		</ActionReaction>
+		
+		<!--ActionReaction>
+			<Action>poogladaj obloki w</Action>
+			<Reaction>
+				<Method>
+					<Name>Communicate</Name>
+					<Arg>Widzisz tylko jakies kropki</Arg>
+				</Method>
+			</Reaction>
+		</ActionReaction-->
 	</ActionsReactions>
 	
 	<PossibleCommands>
 		<Text>help me root</Text>
-		<Text>idz zachod z root</Text>
+		<Text>idz zachod</Text>
 		<Text>krzyknij w root</Text>
+		<!--Text>poogladaj obloki w root</Text-->
 	</PossibleCommands>
 </Location>

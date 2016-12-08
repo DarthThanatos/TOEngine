@@ -1,5 +1,7 @@
 package map;
 
+import commands.InteractionResult;
+import commands.MovementResult;
 import persistence.Hero;
 import map.element.Element;
 import map.location.Location;
@@ -14,5 +16,6 @@ public interface IMap {
 	public void addLocation(Location location);
 	public void addNPC(NPC npc);
 	public void addElement(Element element);
-	public Hero moveToLocation(Hero hero, int locationId);
+	public MovementResult moveToLocation(Hero hero, String cmd);
+	public InteractionResult interact(Hero hero, String cmd);
 }

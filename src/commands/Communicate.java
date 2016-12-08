@@ -1,5 +1,7 @@
 package commands;
 
+import persistence.Hero;
+
 public class Communicate implements Command{
 
 	String arg; 
@@ -9,8 +11,8 @@ public class Communicate implements Command{
 	}
 	
 	@Override
-	public void work() {
-		System.out.println(arg);
+	public InteractionResult work(Hero hero, Object arg) {
+		return new InteractionResult(hero, this.arg, true, true);
 	}
 
 }

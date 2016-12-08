@@ -1,5 +1,7 @@
 package map.location;
 
+import java.security.KeyException;
+
 import iterable.IterableChild;
 
 import org.w3c.dom.Document;
@@ -7,7 +9,9 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Element;
 
+import persistence.Hero;
 import commands.Command;
+import commands.InteractionResult;
 
 public class StandardLocation extends Location{
 
@@ -28,7 +32,7 @@ public class StandardLocation extends Location{
 	}
 
 	@Override
-	public void addElement(String elementFileName) {
+	public void addNPCs(NodeList npcNodeList) {
 		
 	}
 
@@ -38,14 +42,13 @@ public class StandardLocation extends Location{
 	}
 
 	@Override
-	public void addNPCs(NodeList npcNodeList) {
-		// TODO Auto-generated method stub
+	public void addElements(NodeList elementNodeList) {
 		
 	}
+	
 
 	@Override
-	public void addElements(NodeList elementNodeList) {
-		// TODO Auto-generated method stub
+	public void addElement(String elementFileName) {
 		
 	}
 
@@ -58,41 +61,16 @@ public class StandardLocation extends Location{
 	}
 
 	@Override
-	public void addReactions(NodeList reactionsList) {		
-		for (int i = 0; i < reactionsList.getLength(); i++){
-	        Element actionreaction_node = (Element)reactionsList.item(i);
-	        String action = actionreaction_node.getElementsByTagName("Action").item(0).getTextContent();
-	        Element reactionNode = (Element)(((Element)(actionreaction_node.getElementsByTagName("Reaction")).item(0)).getElementsByTagName("Method")).item(0);
-	        String arg = reactionNode.getElementsByTagName("Arg").item(0).getTextContent();
-	        String reaction = reactionNode.getElementsByTagName("Name").item(0).getTextContent();
-	        addReaction(action,reaction,arg); //see iterablechild.addreaction
-		}
-		System.out.println("commands for" + key);
-		for (Command cmd : commandMap.values()){
-			cmd.work();
-		}
-	}
-
-	@Override
-	public void executeCommand(String key, String command) {
-		if (key == this.key){
-			execute(key,command);
-		}
-		else{
-			boolean someoneAnswered = false;
+	public InteractionResult executeCommand(Hero hero, String key, String command) {
+		if (key.equals(this.key)){
+			InteractionResult res = execute(hero, key,command);
+			if(res.regardsMe) return res;
 			for (IterableChild child: children){
-				someoneAnswered |= child.execute(key, command);
-			}
-			if(!someoneAnswered){
-				System.out.println("Wrong command, see help");
+				InteractionResult child_res = child.execute(hero, key, command);
+				if(child_res.regardsMe) return child_res;
+				
 			}
 		}
+		return new InteractionResult(hero, "Chodzi Ci o cos konkretnego?", false, false);
 	}
-
-	@Override
-	public boolean execute(String key, String command) {
-		if(this.key == key) commandMap.get(key).work();
-		return true;
-	}
-
 }

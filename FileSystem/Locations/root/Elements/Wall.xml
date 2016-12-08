@@ -6,16 +6,33 @@
 		<ActionReaction>
 			<Action>przygladnij sie</Action>
 			<Reaction>
-				<Text>to dziwna sciana</Text>
+				<Method>
+					<Name>Communicate</Name>
+					<Arg>To dziwna sciana</Arg>
+				</Method>
 			</Reaction>
 		</ActionReaction>
 		<ActionReaction>
 			<Action>Dotknij</Action>
 			<Reaction>
-				<Text>Faktura sciany przyprawia Cie o dreszcze</Text>
+				<Method>
+					<Name>Communicate</Name>
+					<Arg>Faktura sciany przyprawia Cie o dreszcze</Arg>
+				</Method>
 			</Reaction>
 		</ActionReaction>
 	</ActionsReactions>
+	
+	<Quests>
+		<Quest>
+			<HeroRequirements></HeroRequirements>
+			<Consequences></Consequences>
+		</Quest>
+	</Quests>
+	
+	<UnexpectedEvents>
+		<UnexpectedEvent></UnexpectedEvent>
+	</UnexpectedEvents>
 	
 	<PossibleCommands>
 		<Text>przygladnij sie sciana</Text>

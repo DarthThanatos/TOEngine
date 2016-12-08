@@ -20,15 +20,12 @@ import commands.*;
 
 public abstract class Location extends IterableChild{
 	private int id;
-	protected String key;
 	private String description;
 	private List<Hero> heroes;
-	private List<String> possibleCommands;
-	public Location north, west, east, south;
+	private Location north, west, east, south;
 	private List<Element> elements;
 	private List<NPC> npcs;
 	protected List<IterableChild> children;
-	
 	private Document doc;
 	
 	public Location(int id){
@@ -42,10 +39,25 @@ public abstract class Location extends IterableChild{
 		this.key = ((org.w3c.dom.Element)(doc.getDocumentElement())).getAttribute("key");
 		this.heroes = new ArrayList();
 		this.elements = new ArrayList();
-		this.possibleCommands = new ArrayList();
+		this.children = new ArrayList();
 	}
 	
-	public abstract void executeCommand(String key, String command); 
+	public Location getNorth(){
+		return north;
+	}
+	
+	public Location getSouth(){
+		return south;
+	}
+	
+	public Location getWest(){
+		return west;
+	}
+	
+	public Location getEast(){
+		return east;
+	}
+	
 	
 	public void setDirections(Location north, Location east, Location south, Location west){
 		this.north = north;
@@ -53,17 +65,12 @@ public abstract class Location extends IterableChild{
 		this.south = south;
 		this.west = west;
 	}
-	
-	public abstract void addElements(NodeList elementNodeList);
-	public abstract void addElement(String elementFileName);
-			
+				
 	public void addElement(Element element){
 		elements.add(element);
 		children.add(element);
 	}
 	
-	public abstract void addNPCs(NodeList npcNodeList);
-	public abstract void addNPC(String npcFileName);
 	
 	public void addNPC(NPC npc){
 		npcs.add(npc);
@@ -71,23 +78,26 @@ public abstract class Location extends IterableChild{
 	}
 	
 	public abstract void addPossibleCommands(NodeList commandList);
-	public void addPossibleCommand(String command){
-		possibleCommands.add(command);
-	}
+
 	
 	public void addHero(Hero hero){
 		heroes.add(hero);
 	}
 	
 	public void deleteHero(Hero hero){
-		for(Hero someHero : heroes){
-			if(someHero.getId() == hero.getId()){
-				heroes.remove(someHero);
+		for(int i = 0; i < heroes.size(); i++){
+			if(heroes.get(i).getId() == hero.getId()){
+				heroes.remove(i);
 			}
-		}
+		}			
 	}
 	
-	public abstract void addReactions(NodeList reactions);
+	public String getAllPossibleCommands(){
+		String res = getPossibilities();
+		for(IterableChild child: children) 
+			res += child.getPossibilities();
+		return res;
+	}
 	
 	@Override
 	public String toString(){
@@ -96,13 +106,21 @@ public abstract class Location extends IterableChild{
 			res += element.getDescription();
 		}
 		for (String command : possibleCommands){
-			res += command + "\n";
+			res += "	->" + command + "\n";
 		}
+		res += "Znajduja sie tutaj:\n"; 
+		for (Hero hero:heroes) res +=  "	->" + hero.getName() + ", " +hero.getDescription() + "\n";
 		return res;
 	}
 	
 	public int getId(){
 		return this.id;
 	}
+	
+	public abstract void addElements(NodeList elementNodeList);
+	public abstract void addElement(String elementFileName);
+	public abstract InteractionResult executeCommand(Hero hero, String key, String command); 
+	public abstract void addNPCs(NodeList npcNodeList);
+	public abstract void addNPC(String npcFileName);
 }
 

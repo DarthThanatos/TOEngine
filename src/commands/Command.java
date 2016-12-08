@@ -1,5 +1,7 @@
 package commands;
 
+import persistence.Hero;
+
 public interface Command {
-	public void work();
+	public InteractionResult work(Hero hero, Object arg);
 }

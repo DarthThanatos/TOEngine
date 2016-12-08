@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <Location id="1" key="location1">
-   <Description>location1</Description>
+   <Description>Przed Toba rozposciera sie standardowe pomieszczenie mieszkalne.</Description>
    <Locations>
 	   <Location id="0">
 	       <Direction>East</Direction>
@@ -8,7 +8,7 @@
 	   </Location>
    </Locations>
    <Elements></Elements>
-	<NPCs></NPCs>
+   <NPCs></NPCs>
 	
 	<ActionsReactions>
 		<ActionReaction>
@@ -20,19 +20,10 @@
 				</Method>
 			</Reaction>
 		</ActionReaction>
-		<ActionReaction>
-			<Action>idz wschod</Action>
-			<Reaction>
-				<Method>
-					<Name>ChangeLocation</Name>
-					<Arg>East</Arg>
-				</Method>
-			</Reaction>
-		</ActionReaction>
 	</ActionsReactions>
 	
 	<PossibleCommands>
 		<Text>help location1</Text>
-		<Text>idz wschod z location1</Text>
+		<Text>idz wschod</Text>
 	</PossibleCommands>
 </Location>

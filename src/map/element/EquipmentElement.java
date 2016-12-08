@@ -1,5 +1,9 @@
 package map.element;
 
+import persistence.Hero;
+
+import commands.InteractionResult;
+
 public class EquipmentElement extends Element{
 
 	public EquipmentElement(String fileName) {
@@ -8,9 +12,11 @@ public class EquipmentElement extends Element{
 	}
 
 	@Override
-	public boolean execute(String key, String command) {
+	public InteractionResult execute(Hero hero, String key, String command) {
 		// TODO Auto-generated method stub
-		return false;
+		return null;
 	}
+
+
 	
 }
