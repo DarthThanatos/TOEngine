@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <Element id="1" key="sciana">
-	<Desctiption>Dziwna sciana stoi przed toba, odpada z niej tynk, obok przebiega dziurawa rynna</Desctiption>
+	<Description>Dziwna sciana stoi przed toba, odpada z niej tynk, obok przebiega dziurawa rynna</Description>
 	
 	<ActionsReactions>
 		<ActionReaction>
@@ -13,7 +13,7 @@
 			</Reaction>
 		</ActionReaction>
 		<ActionReaction>
-			<Action>Dotknij</Action>
+			<Action>dotknij</Action>
 			<Reaction>
 				<Method>
 					<Name>Communicate</Name>

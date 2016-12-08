@@ -62,7 +62,7 @@ public class XMLMonter implements IMapMonter{
 	         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 	         Document doc = dBuilder.parse(inputFile);
 	         doc.getDocumentElement().normalize(); 
-	         Node locationNode =  doc.getDocumentElement();
+	         Node locationNode =  doc.getDocumentElement(); //to-do : recognizing type of the parent node
 	         location = new StandardLocation(doc); //here we pass all that can be mounted internally...
 	         map.addLocation(location);
 	         NodeList outer_locations_node_list = doc.getElementsByTagName("Locations"); //... but outer locations need intervention from this monter

@@ -19,24 +19,16 @@ import org.w3c.dom.NodeList;
 import commands.*;
 
 public abstract class Location extends IterableChild{
-	private int id;
-	private String description;
 	private List<Hero> heroes;
 	private Location north, west, east, south;
-	private List<Element> elements;
+	protected List<Element> elements;
 	private List<NPC> npcs;
 	protected List<IterableChild> children;
 	private Document doc;
 	
-	public Location(int id){
-		this.id = id;
-	}
-	
 	public Location(Document doc){
+		super(doc);
 		this.doc = doc;
-		this.description = doc.getElementsByTagName("Description").item(0).getTextContent();
-		this.id = Integer.parseInt(((org.w3c.dom.Element)(doc.getDocumentElement())).getAttribute("id"));
-		this.key = ((org.w3c.dom.Element)(doc.getDocumentElement())).getAttribute("key");
 		this.heroes = new ArrayList();
 		this.elements = new ArrayList();
 		this.children = new ArrayList();
@@ -76,8 +68,6 @@ public abstract class Location extends IterableChild{
 		npcs.add(npc);
 		children.add(npc);
 	}
-	
-	public abstract void addPossibleCommands(NodeList commandList);
 
 	
 	public void addHero(Hero hero){
@@ -101,13 +91,15 @@ public abstract class Location extends IterableChild{
 	
 	@Override
 	public String toString(){
-		String res =  description + "\nPossible commands:\n";
-		for(Element element : elements){
-			res += element.getDescription();
+		String res =  description + "\n";
+		for(IterableChild child : children){
+			res += child.getDescription() + "\n";
 		}
-		for (String command : possibleCommands){
-			res += "	->" + command + "\n";
-		}
+		res += "Possible commands:\n";
+		//for (String command : possibleCommands){
+		//	res += "	->" + command + "\n";
+		//}
+		res += getAllPossibleCommands();
 		res += "Znajduja sie tutaj:\n"; 
 		for (Hero hero:heroes) res +=  "	->" + hero.getName() + ", " +hero.getDescription() + "\n";
 		return res;

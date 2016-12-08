@@ -1,13 +1,14 @@
 package map.element;
 
-import persistence.Hero;
+import org.w3c.dom.Document;
 
+import persistence.Hero;
 import commands.InteractionResult;
 
 public class EquipmentElement extends Element{
 
-	public EquipmentElement(String fileName) {
-		super(fileName);
+	public EquipmentElement(Document doc) {
+		super(doc);
 		// TODO Auto-generated constructor stub
 	}
 
