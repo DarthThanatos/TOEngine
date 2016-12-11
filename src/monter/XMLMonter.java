@@ -2,6 +2,7 @@ package monter;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Constructor;
 import java.util.HashMap;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -14,6 +15,8 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import commands.Command;
+
 import map.ArcadiaMap;
 import map.IMap;
 import map.location.Location;
@@ -23,11 +26,9 @@ public class XMLMonter implements IMapMonter{
 	
 	IMap map;
 	DocumentBuilderFactory dbFactory;
-	HashMap<String, Location> directionDict;
 	
 	public XMLMonter(){
 		map = new ArcadiaMap();
-		directionDict = new HashMap();
 	}
 	
 	private int locationAlreadyMounted(String fileName){
@@ -50,8 +51,7 @@ public class XMLMonter implements IMapMonter{
 	
 	private Location mountGraph(String FileName){
 		Location location = null;
-        Location outerLocation;
-        int outerLocationId;
+		HashMap<String, Location> directionDict = new HashMap(); 
 		directionDict.put("West", null);
 		directionDict.put("North", null);
 		directionDict.put("East",null);
@@ -62,20 +62,15 @@ public class XMLMonter implements IMapMonter{
 	         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 	         Document doc = dBuilder.parse(inputFile);
 	         doc.getDocumentElement().normalize(); 
-	         Node locationNode =  doc.getDocumentElement(); //to-do : recognizing type of the parent node
-	         location = new StandardLocation(doc); //here we pass all that can be mounted internally...
+	         Node locationNode =  doc.getDocumentElement(); 
+	         Class<?> locationClass = Class.forName("map.location." + locationNode.getNodeName());
+			 Constructor<?> constructor = locationClass.getConstructor(Document.class);
+			 location = (Location)constructor.newInstance(doc);
 	         map.addLocation(location);
-	         NodeList outer_locations_node_list = doc.getElementsByTagName("Locations"); //... but outer locations need intervention from this monter
-	         for (int i = 0; i < outer_locations_node_list.getLength(); i++) {
-	            Node outer_location_node = outer_locations_node_list.item(i);
-	               Element eLocation = (Element) outer_location_node;
-	               String direction = eLocation.getElementsByTagName("Direction").item(0).getTextContent();
-	               String fileName = eLocation.getElementsByTagName("File").item(0).getTextContent();
-	               if ( (outerLocationId = locationAlreadyMounted(fileName)) != -1)outerLocation = map.getLocation(outerLocationId);
-	               else outerLocation = mountGraph(fileName);
-	               directionDict.put(direction, outerLocation);
-	            
-	         }
+	         NodeList std_locations_node_list = ((Element)doc.getElementsByTagName("Locations").item(0)).getElementsByTagName("StandardLocation"); //... but outer locations need intervention from this monter
+	         NodeList guess_chambers_node_list = ((Element)doc.getElementsByTagName("Locations").item(0)).getElementsByTagName("GuessChamber");
+	         visitLocationList(std_locations_node_list, directionDict);
+	         visitLocationList(guess_chambers_node_list, directionDict);
 	         location.setDirections(directionDict.get("North"),directionDict.get("East"), directionDict.get("South"), directionDict.get("West"));
 	      } catch (Exception e) {
 	         e.printStackTrace();
@@ -83,6 +78,20 @@ public class XMLMonter implements IMapMonter{
 		return location;
 	}
 	
+	private void visitLocationList(NodeList outer_locations_node_list, HashMap<String, Location>directionDict){
+        Location outerLocation;
+        int outerLocationId;
+        for (int i = 0; i < outer_locations_node_list.getLength(); i++) {
+            Node outer_location_node = outer_locations_node_list.item(i);
+            Element eLocation = (Element) outer_location_node;
+            String direction = eLocation.getElementsByTagName("Direction").item(0).getTextContent();
+            String fileName = eLocation.getElementsByTagName("File").item(0).getTextContent();
+            if ( (outerLocationId = locationAlreadyMounted(fileName)) != -1)outerLocation = map.getLocation(outerLocationId);
+            else outerLocation = mountGraph(fileName);
+            directionDict.put(direction, outerLocation);
+        }		
+	}
+		
 	@Override
 	public IMap createMap(String rootFileName) {
 		Location rootLocation = mountGraph(rootFileName);

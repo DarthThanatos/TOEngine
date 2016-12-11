@@ -92,21 +92,4 @@ public class StandardLocation extends Location{
 	public void addElement(String elementFileName) {
 		
 	}
-
-
-	@Override
-	public InteractionResult executeCommand(Hero hero, String key, String command) {
-		if (key.equals(this.key)){
-			InteractionResult res = execute(hero, key,command);
-			if(res.regardsMe) return res;
-		}
-		else{
-			for (IterableChild child: children){
-				InteractionResult child_res = child.execute(hero, key, command);
-				if(child_res.regardsMe) return child_res;
-				
-			}
-		}
-		return new InteractionResult(hero, "Chodzi Ci o cos konkretnego?", false, false);
-	}
 }

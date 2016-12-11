@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
-<StandardLocation id="1" key="location1">
-   <Description>Przed Toba rozposciera sie standardowe pomieszczenie mieszkalne.</Description>
+<GuessChamber id="2" key="guess1">
+   <Description>Przed Toba rozposciera sie mroczne pomieszczenie. Widzisz kamienne podniesienie u stop poteznej kamiennej figury przedstawiajacej Winogrona</Description>
    <Locations>
 	   <StandardLocation id="0">
-	       <Direction>East</Direction>
+	       <Direction>West</Direction>
 	       <File>FileSystem\Locations\root\root.xml</File>
 	   </StandardLocation>
    </Locations>
@@ -20,10 +20,12 @@
 				</Method>
 			</Reaction>
 		</ActionReaction>
+		
+		<QuestAnswer></QuestAnswer>
 	</ActionsReactions>
 	
 	<PossibleCommands>
-		<Text>help location1</Text>
-		<Text>idz wschod</Text>
+		<Text>help guess1</Text>
+		<Text>idz zachod</Text>
 	</PossibleCommands>
-</StandardLocation>
+</GuessChamber>

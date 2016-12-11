@@ -107,9 +107,23 @@ public abstract class Location extends IterableChild{
 		return this.id;
 	}
 	
+	public InteractionResult executeCommand(Hero hero, String key, String command) {
+		if (key.equals(this.key)){
+			InteractionResult res = execute(hero, key,command);
+			if(res.regardsMe) return res;
+		}
+		else{
+			for (IterableChild child: children){
+				InteractionResult child_res = child.execute(hero, key, command);
+				if(child_res.regardsMe) return child_res;
+				
+			}
+		}
+		return new InteractionResult(hero, "Chodzi Ci o cos konkretnego?", false, false);
+	}
+	
 	public abstract void addElements(NodeList elementNodeList);
 	public abstract void addElement(String elementFileName);
-	public abstract InteractionResult executeCommand(Hero hero, String key, String command); 
 	public abstract void addNPCs(NodeList npcNodeList);
 	public abstract void addNPC(String npcFileName);
 }

@@ -1,11 +1,15 @@
 <?xml version="1.0"?>
-<Location id="0" key="root">
+<StandardLocation id="0" key="root">
    <Description>Znajdujesz sie w poczatkowej lokacji zwanej root. Wpisz $help me root$ zeby wyswietlic pomoc </Description>
    <Locations>
-	   <Location id="1">
+	   <GuessChamber id="2">
+	       <Direction>East</Direction>
+	       <File>FileSystem//Locations//guess1//Guess1.xml</File>
+	   </GuessChamber>
+	   <StandardLocation id="1">
 	       <Direction>West</Direction>
 	       <File>FileSystem//Locations//location1//Location1.xml</File>
-	   </Location>
+	   </StandardLocation>
    </Locations>
    <Elements>
 	   <StaticElement>
@@ -51,7 +55,8 @@
 	<PossibleCommands>
 		<Text>help me root</Text>
 		<Text>idz zachod</Text>
+		<Text>idz wschod</Text>
 		<Text>krzyknij w root</Text>
 		<!--Text>poogladaj obloki w root</Text-->
 	</PossibleCommands>
-</Location>
+</StandardLocation>

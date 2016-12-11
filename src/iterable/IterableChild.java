@@ -46,7 +46,7 @@ public abstract class IterableChild {
 	}
 	
 	public void addReaction(String command, String reaction,String arg){
-		try {
+		try {//guava
 			Class<?> cmd = Class.forName("commands." + reaction);
 			Constructor<?> ctor = cmd.getConstructor(String.class);
 			Command object = (Command)ctor.newInstance(arg);
