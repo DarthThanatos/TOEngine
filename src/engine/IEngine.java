@@ -1,5 +1,7 @@
 package engine;
 
+import commands.InteractionResult;
+
 import persistence.Hero;
 import map.element.Element;
 import map.location.Location;
@@ -17,4 +19,5 @@ public interface IEngine {
 	public Answer interactWithElement(Hero hero, int elementId);
 	public Answer guessWhatIsIt(Hero hero, int elementId);
 	public Hero addToEquipment(Hero hero, int elementId);
+	public InteractionResult interact(Hero hero, String cmd);
 }

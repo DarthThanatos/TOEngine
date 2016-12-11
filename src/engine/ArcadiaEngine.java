@@ -1,5 +1,7 @@
 package engine;
 
+import commands.InteractionResult;
+
 import persistence.Hero;
 import map.element.Element;
 import map.location.Location;
@@ -65,6 +67,12 @@ public class ArcadiaEngine implements IEngine {
 
 	@Override
 	public Hero addToEquipment(Hero hero, int elementId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public InteractionResult interact(Hero hero, String cmd) {
 		// TODO Auto-generated method stub
 		return null;
 	}
