@@ -43,8 +43,8 @@ public class StandardLocation extends Location{
 	        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 	        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 			for (int i = 0; i < personsNodeList.getLength(); i++){
-		        Element staticElementNode = (Element)personsNodeList.item(i);
-		        String filename = staticElementNode.getElementsByTagName("File").item(0).getTextContent();
+		        Element personNode = (Element)personsNodeList.item(i);
+		        String filename = personNode.getElementsByTagName("File").item(0).getTextContent();
 		        File inputFile = new File(filename);
 		        Document doc = dBuilder.parse(inputFile);
 		        doc.getDocumentElement().normalize();
@@ -57,10 +57,6 @@ public class StandardLocation extends Location{
 		}
 	}
 	
-	@Override
-	public void addNPC(String npcFileName) {
-		
-	}
 
 	@Override
 	public void addElements(NodeList elementNodeList) {
@@ -87,9 +83,5 @@ public class StandardLocation extends Location{
 			e.printStackTrace();
 		}
 	}
-	
-	@Override
-	public void addElement(String elementFileName) {
-		
-	}
+
 }

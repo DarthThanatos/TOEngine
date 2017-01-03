@@ -51,6 +51,9 @@ public abstract class Location extends IterableChild{
 		return east;
 	}
 	
+	public List<Hero> getHeroes(){
+		return heroes;
+	}
 	
 	public void setDirections(Location north, Location east, Location south, Location west){
 		this.north = north;
@@ -83,21 +86,20 @@ public abstract class Location extends IterableChild{
 		}			
 	}
 	
-	public String getAllPossibleCommands(){
-		String res = getPossibilities();
+	public String getAllPossibleCommands(Hero hero){
+		String res = getPossibilities(hero);
 		for(IterableChild child: children) 
-			res += child.getPossibilities();
+			res += child.getPossibilities(hero);
 		return res;
 	}
 	
-	@Override
-	public String toString(){
+	public String toString(Hero askingHero){ //askingHero - hero who tries to call a command
 		String res =  description + "\n";
 		for(IterableChild child : children){
 			res += child.getDescription() + "\n";
 		}
 		res += "Possible commands:\n";
-		res += getAllPossibleCommands();
+		res += getAllPossibleCommands(askingHero);
 		res += "Znajduja sie tutaj:\n"; 
 		for (Hero hero:heroes) res +=  "	->" + hero.getName() + ", " +hero.getDescription() + "\n";
 		return res;
@@ -123,8 +125,6 @@ public abstract class Location extends IterableChild{
 	}
 	
 	public abstract void addElements(NodeList elementNodeList);
-	public abstract void addElement(String elementFileName);
 	public abstract void addNPCs(NodeList npcNodeList);
-	public abstract void addNPC(String npcFileName);
 }
 

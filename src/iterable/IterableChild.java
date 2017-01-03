@@ -67,7 +67,7 @@ public abstract class IterableChild {
 		}
 	}
 	
-	public String getPossibilities(){// including children possible actions
+	public String getPossibilities(Hero hero){// including children possible actions
 		String res = "";
 		for (String cmd : possibleCommands){
 			res += "	->" + cmd + "\n";;

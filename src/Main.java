@@ -32,7 +32,7 @@ public class Main {
 		Hero hero1 = createHero(1,0,"Robert","Czlowiek slusznego charakteru");
 		root.addHero(hero1);
 		System.out.println(
-				"Main: " + map.getLocation(hero.getLocationId()).toString() );
+				"Main: " + map.getLocation(hero.getLocationId()).toString(hero) );
 		while(true){
 			System.out.println("Main: Co chcesz zrobic?");
 			boolean changedLocations = false;

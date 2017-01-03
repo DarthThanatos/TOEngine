@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<StandardLocation id="3" key="location3">
+   <Description>Karczemna dzielnica rozposciera sie lasem szyldow i morzem glosow. Pijak stoi przed Toba wymiotujac. </Description>
+   <Locations>
+	   <GuessChamber id="2">
+	       <Direction>West</Direction>
+	       <File>FileSystem//Locations//guess1//Guess1.xml</File>
+	   </GuessChamber>
+   </Locations>
+   <Elements>
+	</Elements>
+	<NPCs>
+	</NPCs>
+	<ActionsReactions>
+		<ActionReaction>
+			<Action>help me</Action>
+			<Reaction>
+				<Method>
+					<Name>ShowHelp</Name>
+					<Arg></Arg>
+				</Method>
+			</Reaction>
+		</ActionReaction>
+		<ActionReaction>
+			<Action>krzyknij w</Action>
+			<Reaction>
+				<Method>
+					<Name>Communicate</Name>
+					<Arg>Twoj krzyk ginie w gestwinie wrzawy, jaka panuje w Dzielnicy Karczemnej</Arg>
+				</Method>
+			</Reaction>
+		</ActionReaction>
+		
+		<ActionReaction>
+			<Action>poogladaj obloki w</Action>
+			<Reaction>
+				<Method>
+					<Name>Communicate</Name>
+					<Arg>Widzisz tylko jakies kropki</Arg>
+				</Method>
+			</Reaction>
+		</ActionReaction>
+	</ActionsReactions>
+	
+	<PossibleCommands>
+		<Text>help me location3</Text>
+		<Text>idz zachod</Text>
+		<Text>krzyknij w location3</Text>
+		<Text>poogladaj obloki w location3</Text>
+	</PossibleCommands>
+</StandardLocation>

@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ServerSide"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="C:/Users/Robert/Desktop/Robert/agh/TO2/project/Tests/junit5-master/junit-jupiter-api/build/libs/junit-jupiter-api-5.0.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Robert/Desktop/Robert/agh/TO2/project/Tests/junit5-master/junit-jupiter-api/build/libs/junit-jupiter-api-5.0.0-SNAPSHOT-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Robert/Desktop/Robert/agh/TO2/project/Tests/junit5-master/junit-jupiter-api/build/libs/junit-jupiter-api-5.0.0-SNAPSHOT-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Robert/Desktop/Robert/agh/TO2/project/Tests/junit5-master/junit-platform-runner/build/libs/junit-platform-runner-1.0.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Robert/Desktop/Robert/agh/TO2/project/Tests/junit5-master/junit-platform-runner/build/libs/junit-platform-runner-1.0.0-SNAPSHOT-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Robert/Desktop/Robert/agh/TO2/project/Tests/junit5-master/junit-platform-runner/build/libs/junit-platform-runner-1.0.0-SNAPSHOT-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Robert/Desktop/Robert/agh/TO2/project/Tests/junit5-master/junit-platform-launcher/build/libs/junit-platform-launcher-1.0.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Robert/Desktop/Robert/agh/TO2/project/Tests/junit5-master/junit-platform-launcher/build/libs/junit-platform-launcher-1.0.0-SNAPSHOT-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Robert/Desktop/Robert/agh/TO2/project/Tests/junit5-master/junit-platform-launcher/build/libs/junit-platform-launcher-1.0.0-SNAPSHOT-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Robert/Desktop/Robert/agh/TO2/project/Tests/junit5-master/junit-platform-engine/build/libs/junit-platform-engine-1.0.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Robert/Desktop/Robert/agh/TO2/project/Tests/junit5-master/junit-platform-engine/build/libs/junit-platform-engine-1.0.0-SNAPSHOT-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Robert/Desktop/Robert/agh/TO2/project/Tests/junit5-master/junit-platform-engine/build/libs/junit-platform-engine-1.0.0-SNAPSHOT-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Robert/Desktop/Robert/agh/TO2/project/Tests/junit5-master/junit-platform-commons/build/libs/junit-platform-commons-1.0.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Robert/Desktop/Robert/agh/TO2/project/Tests/junit5-master/junit-platform-commons/build/libs/junit-platform-commons-1.0.0-SNAPSHOT-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Robert/Desktop/Robert/agh/TO2/project/Tests/junit5-master/junit-platform-commons/build/libs/junit-platform-commons-1.0.0-SNAPSHOT-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Robert/Desktop/Robert/agh/TO2/project/Tests/junit5-master/junit-jupiter-engine/build/libs/junit-jupiter-engine-5.0.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Robert/Desktop/Robert/agh/TO2/project/Tests/junit5-master/junit-jupiter-engine/build/libs/junit-jupiter-engine-5.0.0-SNAPSHOT-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Robert/Desktop/Robert/agh/TO2/project/Tests/junit5-master/junit-jupiter-engine/build/libs/junit-jupiter-engine-5.0.0-SNAPSHOT-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Robert/Desktop/Robert/agh/TO2/project/Tests/junit5-master/opentest4j-1.0.0-ALPHA.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
