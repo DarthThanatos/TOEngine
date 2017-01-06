@@ -18,6 +18,7 @@ public abstract class IterableChild {
 	
 	protected HashMap<String, Command> commandMap;
 	protected List<String> possibleCommands;
+	protected List<IterableChild> children;
 	protected String key;
 	protected String description;
 	protected int id;
@@ -26,12 +27,17 @@ public abstract class IterableChild {
 		commandMap = new HashMap();
 		possibleCommands = new ArrayList();
 		this.description = doc.getElementsByTagName("Description").item(0).getTextContent();
+		this.children = new ArrayList();
 		this.id = Integer.parseInt(((org.w3c.dom.Element)(doc.getDocumentElement())).getAttribute("id"));
 		this.key = ((org.w3c.dom.Element)(doc.getDocumentElement())).getAttribute("key");
 		NodeList actionsReactions = ((Element)doc.getElementsByTagName("ActionsReactions").item(0)).getElementsByTagName("ActionReaction");
 		NodeList commandList = ((Element)doc.getElementsByTagName("PossibleCommands").item(0)).getElementsByTagName("Text");
 		addPossibleCommands(commandList);
 		addReactions(actionsReactions);
+	}
+	
+	public String getKey(){
+		return key;
 	}
 	
 	public void addReactions(NodeList reactionsList) {		
@@ -55,8 +61,8 @@ public abstract class IterableChild {
 			e.printStackTrace();
 		}
 	}
-	
-	public InteractionResult execute(Hero hero,String key, String command) {
+		
+	public InteractionResult executeCommand(Hero hero, String key, String command){
 		try{
 			if(this.key.equals(key)){
 				return commandMap.get(command).work(hero, this);
@@ -65,6 +71,21 @@ public abstract class IterableChild {
 		}catch(Exception e){
 			return new InteractionResult(hero,"",false,false);
 		}
+	}
+	
+	public InteractionResult execute(Hero hero,String key, String command) {
+		if (key.equals(this.key)){
+			InteractionResult res = executeCommand(hero, key,command);
+			if(res.regardsMe) return res;
+		}
+		else{
+			for (IterableChild child: children){
+				InteractionResult child_res = child.execute(hero, key, command);
+				if(child_res.regardsMe) return child_res;
+				
+			}
+		}
+		return new InteractionResult(hero, "Chodzi Ci o cos konkretnego?", false, false);
 	}
 	
 	public String getPossibilities(Hero hero){// including children possible actions
@@ -86,7 +107,22 @@ public abstract class IterableChild {
 		possibleCommands.add(command); //enumeration of possibilities, not real command objects
 	}
 	
-	public String getDescription(){
+	public String getDescription(Hero hero){
 		return description;
+	}
+	
+	public String getAllPossibleCommands(Hero hero){
+		String res = getPossibilities(hero);
+		for(IterableChild child: children) 
+			res += child.getAllPossibleCommands(hero);
+		return res;
+	}
+	
+	public String getAllPossibleDescriptions(Hero hero){
+		String res = description + "\n";
+		for(IterableChild child : children){
+			res += child.getAllPossibleDescriptions(hero);
+		}
+		return res;
 	}
 }

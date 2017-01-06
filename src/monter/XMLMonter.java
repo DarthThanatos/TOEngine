@@ -15,12 +15,10 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import commands.Command;
 
 import map.ArcadiaMap;
 import map.IMap;
 import map.location.Location;
-import map.location.StandardLocation;
 
 public class XMLMonter implements IMapMonter{
 	
@@ -67,10 +65,8 @@ public class XMLMonter implements IMapMonter{
 			 Constructor<?> constructor = locationClass.getConstructor(Document.class);
 			 location = (Location)constructor.newInstance(doc);
 	         map.addLocation(location);
-	         NodeList std_locations_node_list = ((Element)doc.getElementsByTagName("Locations").item(0)).getElementsByTagName("StandardLocation"); //... but outer locations need intervention from this monter
-	         NodeList guess_chambers_node_list = ((Element)doc.getElementsByTagName("Locations").item(0)).getElementsByTagName("GuessChamber");
-	         visitLocationList(std_locations_node_list, directionDict);
-	         visitLocationList(guess_chambers_node_list, directionDict);
+	         NodeList locations_node_list = ((Element)doc.getElementsByTagName("Locations").item(0)).getElementsByTagName("Location"); //... but outer locations need intervention from this monter
+	         visitLocationList(locations_node_list, directionDict);
 	         location.setDirections(directionDict.get("North"),directionDict.get("East"), directionDict.get("South"), directionDict.get("West"));
 	      } catch (Exception e) {
 	         e.printStackTrace();

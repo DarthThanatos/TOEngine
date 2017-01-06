@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+
+<NPC id="1" key="statua">
+	<Description>Widzisz kamienne podniesienie u stop poteznej kamiennej figury przedstawiajacej Winogrona</Description>
+
+	<ActionsReactions>
+		<ActionReaction>
+			<Action>przygladnij</Action>
+			<Reaction>
+				<Method>
+					<Name>Communicate</Name>
+					<Arg>To kamienna figura. Przedstawia kisc winogron</Arg>
+				</Method>
+			</Reaction>
+		</ActionReaction>
+		<ActionReaction>
+			<Action>dzien dobry</Action>
+			<Reaction>
+				<Method>
+					<Name>Communicate</Name>
+					<Arg>Mowisz dzien dobry do statuy. Myslisz, ze Ci odpowie?</Arg>
+				</Method>
+			</Reaction>
+		</ActionReaction>
+	</ActionsReactions>
+	
+	<PossibleCommands>
+		<Text>przygladnij statua</Text>
+		<Text>dzien dobry statua</Text>
+	</PossibleCommands>
+
+	
+	<Quests>
+		<Quest>
+			<File>FileSystem\Locations\guess1\Quests\Quest1.xml</File>
+		</Quest>
+	</Quests>
+	
+</NPC>

@@ -1,14 +1,12 @@
 <?xml version="1.0"?>
-<StandardLocation id="3" key="location3">
+<Location id="3" key="location3">
    <Description>Karczemna dzielnica rozposciera sie lasem szyldow i morzem glosow. Pijak stoi przed Toba wymiotujac. </Description>
    <Locations>
-	   <GuessChamber id="2">
+	   <Location id="2">
 	       <Direction>West</Direction>
 	       <File>FileSystem//Locations//guess1//Guess1.xml</File>
-	   </GuessChamber>
+	   </Location>
    </Locations>
-   <Elements>
-	</Elements>
 	<NPCs>
 	</NPCs>
 	<ActionsReactions>
@@ -48,4 +46,4 @@
 		<Text>krzyknij w location3</Text>
 		<Text>poogladaj obloki w location3</Text>
 	</PossibleCommands>
-</StandardLocation>
+</Location>

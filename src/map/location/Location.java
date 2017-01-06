@@ -2,37 +2,33 @@ package map.location;
 
 import iterable.IterableChild;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
+import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-import map.element.Element;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
 import map.npc.NPC;
 import persistence.Hero;
 
 import org.w3c.dom.Document;
-import org.w3c.dom.Node;
+import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
-import commands.*;
-
-public abstract class Location extends IterableChild{
+public class Location extends IterableChild{
 	private List<Hero> heroes;
 	private Location north, west, east, south;
-	protected List<Element> elements;
 	protected List<NPC> npcs;
-	protected List<IterableChild> children;
-	private Document doc;
+	protected Document doc;
 	
 	public Location(Document doc){
 		super(doc);
 		this.doc = doc;
 		this.heroes = new ArrayList();
-		this.elements = new ArrayList();
-		this.children = new ArrayList();
 		this.npcs = new ArrayList();
+		Element npcsElement = (Element) doc.getElementsByTagName("NPCs").item(0); 
+		addNPCs(npcsElement);
 	}
 	
 	public Location getNorth(){
@@ -62,18 +58,11 @@ public abstract class Location extends IterableChild{
 		this.west = west;
 	}
 				
-	public void addElement(Element element){
-		elements.add(element);
-		children.add(element);
-	}
-	
-	
 	public void addNPC(NPC npc){
 		npcs.add(npc);
 		children.add(npc);
 	}
 
-	
 	public void addHero(Hero hero){
 		heroes.add(hero);
 	}
@@ -85,21 +74,12 @@ public abstract class Location extends IterableChild{
 			}
 		}			
 	}
-	
-	public String getAllPossibleCommands(Hero hero){
-		String res = getPossibilities(hero);
-		for(IterableChild child: children) 
-			res += child.getPossibilities(hero);
-		return res;
-	}
-	
+		
 	public String toString(Hero askingHero){ //askingHero - hero who tries to call a command
-		String res =  description + "\n";
-		for(IterableChild child : children){
-			res += child.getDescription() + "\n";
-		}
+		String res = "Description:\n"; 
+		res += getAllPossibleDescriptions(askingHero)  + "\n";
 		res += "Possible commands:\n";
-		res += getAllPossibleCommands(askingHero);
+		res += getAllPossibleCommands(askingHero) +  "\n";
 		res += "Znajduja sie tutaj:\n"; 
 		for (Hero hero:heroes) res +=  "	->" + hero.getName() + ", " +hero.getDescription() + "\n";
 		return res;
@@ -108,23 +88,24 @@ public abstract class Location extends IterableChild{
 	public int getId(){
 		return this.id;
 	}
-	
-	public InteractionResult executeCommand(Hero hero, String key, String command) {
-		if (key.equals(this.key)){
-			InteractionResult res = execute(hero, key,command);
-			if(res.regardsMe) return res;
-		}
-		else{
-			for (IterableChild child: children){
-				InteractionResult child_res = child.execute(hero, key, command);
-				if(child_res.regardsMe) return child_res;
-				
-			}
-		}
-		return new InteractionResult(hero, "Chodzi Ci o cos konkretnego?", false, false);
-	}
-	
-	public abstract void addElements(NodeList elementNodeList);
-	public abstract void addNPCs(NodeList npcNodeList);
-}
 
+	public void addNPCs(Element npcsElement) {
+		NodeList npcsNodeList = npcsElement.getElementsByTagName("NPC");		
+		try{
+	        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+	        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			for (int i = 0; i < npcsNodeList.getLength(); i++){
+		        Element npcNode = (Element)npcsNodeList.item(i);
+		        String filename = npcNode.getElementsByTagName("File").item(0).getTextContent();
+		        File inputFile = new File(filename);
+		        Document doc = dBuilder.parse(inputFile);
+		        doc.getDocumentElement().normalize();
+		        NPC npc = new NPC(doc);
+		        npcs.add(npc);
+		        children.add(npc);
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+}

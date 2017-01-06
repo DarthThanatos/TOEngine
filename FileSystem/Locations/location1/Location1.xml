@@ -1,14 +1,17 @@
 <?xml version="1.0"?>
-<StandardLocation id="1" key="location1">
+<Location id="1" key="location1">
    <Description>Przed Toba rozposciera sie standardowe pomieszczenie mieszkalne.</Description>
    <Locations>
-	   <StandardLocation id="0">
+	   <Location id="0">
 	       <Direction>East</Direction>
 	       <File>FileSystem\Locations\root\root.xml</File>
-	   </StandardLocation>
+	   </Location>
    </Locations>
-   <Elements></Elements>
-   <NPCs></NPCs>
+   <NPCs>
+   		<NPC>
+   			<File>FileSystem\Locations\location1\NPCs\questperson1.xml</File>
+   		</NPC>
+   </NPCs>
 	
 	<ActionsReactions>
 		<ActionReaction>
@@ -26,4 +29,4 @@
 		<Text>help location1</Text>
 		<Text>idz wschod</Text>
 	</PossibleCommands>
-</StandardLocation>
+</Location>

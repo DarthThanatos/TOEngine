@@ -1,80 +1,65 @@
 package engine;
 
 import commands.InteractionResult;
-
+import commands.MovementResult;
 import persistence.Hero;
-import map.element.Element;
+import map.IMap;
 import map.location.Location;
-import map.npc.NPC;
-import map.npc.answer.Answer;
+import monter.IMapMonter;
+import monter.XMLMonter;
 
 public class ArcadiaEngine implements IEngine {
 
-	@Override
-	public Hero moveToLocation(Hero hero, int currentLocationId,
-			int newLocationId) {
-		// TODO Auto-generated method stub
-		return null;
+	IMapMonter mapMonter;
+	IMap map;
+	
+	public ArcadiaEngine(String rootFilePath){
+		mapMonter = new XMLMonter();
+		map = mapMonter.createMap(rootFilePath);
 	}
+	
 
 	@Override
 	public Location getLocation(int locationId) {
-		// TODO Auto-generated method stub
-		return null;
+		return map.getLocation(locationId);
+	}
+
+
+	@Override
+	public String interact(Hero hero, String action) {		
+		if(action.split(" ")[0].equals("idz")){
+			MovementResult movRes = map.moveToLocation(hero, action);
+			return movRes.getResultTxt();
+		}
+		else{
+			InteractionResult result = map.interact(hero, action);
+			return result.getResultTxt();
+		}
 	}
 
 	@Override
-	public NPC getNPC(Hero hero, int npcId) {
-		// TODO Auto-generated method stub
-		return null;
+	public void addHeroToMap(Hero hero) {
+		Location location = map.getLocation(hero.getLocationId());
+		location.addHero(hero);
 	}
 
 	@Override
-	public Element getElement(Hero hero, int elementId) {
-		// TODO Auto-generated method stub
-		return null;
+	public void removeHeroFromMap(Hero hero) {
+		Location location = map.getLocation(hero.getLocationId());
+		location.deleteHero(hero);
 	}
 
 	@Override
-	public Location modifyMap(String fileName) {
-		// TODO Auto-generated method stub
-		return null;
+	public String startGame(Hero hero) {
+		String resTxt = map.getLocation(hero.getLocationId()).toString(hero); 
+		addHeroToMap(hero);
+		return resTxt;
 	}
 
-	@Override
-	public Answer talkToNPC(Hero hero, int npcId, String request) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
-	public Hero beginQuest(Hero hero, int npcId, int questId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Answer interactWithElement(Hero hero, int elementId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Answer guessWhatIsIt(Hero hero, int elementId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Hero addToEquipment(Hero hero, int elementId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public InteractionResult interact(Hero hero, String cmd) {
-		// TODO Auto-generated method stub
-		return null;
+	public Location getLocation(Hero hero) {
+		return map.getLocation(hero.getLocationId());
 	}
 
 }

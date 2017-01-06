@@ -1,25 +1,23 @@
 <?xml version="1.0"?>
-<StandardLocation id="0" key="root">
+<Location id="0" key="root">
    <Description>Znajdujesz sie w poczatkowej lokacji zwanej root. Wpisz $help me root$ zeby wyswietlic pomoc </Description>
    <Locations>
-	   <GuessChamber id="2">
+	   <Location id="2">
 	       <Direction>East</Direction>
 	       <File>FileSystem//Locations//guess1//Guess1.xml</File>
-	   </GuessChamber>
-	   <StandardLocation id="1">
+	   </Location>
+	   <Location id="1">
 	       <Direction>West</Direction>
 	       <File>FileSystem//Locations//location1//Location1.xml</File>
-	   </StandardLocation>
+	   </Location>
    </Locations>
-   <Elements>
-	   <StaticElement>
-	   		<File>FileSystem//Locations//root//Elements//Wall.xml</File>
-	   </StaticElement>
-	</Elements>
 	<NPCs>
-		<Person>
+		<NPC>
 			<File>FileSystem//Locations//root//NPCs//Mentor.xml</File>
-		</Person>
+		</NPC>
+		<NPC>
+	   		<File>FileSystem//Locations//root//NPCs//Wall.xml</File>
+	   	</NPC>
 	</NPCs>
 	<ActionsReactions>
 		<ActionReaction>
@@ -40,16 +38,6 @@
 				</Method>
 			</Reaction>
 		</ActionReaction>
-		
-		<!--ActionReaction>
-			<Action>poogladaj obloki w</Action>
-			<Reaction>
-				<Method>
-					<Name>Communicate</Name>
-					<Arg>Widzisz tylko jakies kropki</Arg>
-				</Method>
-			</Reaction>
-		</ActionReaction-->
 	</ActionsReactions>
 	
 	<PossibleCommands>
@@ -57,6 +45,5 @@
 		<Text>idz zachod</Text>
 		<Text>idz wschod</Text>
 		<Text>krzyknij w root</Text>
-		<!--Text>poogladaj obloki w root</Text-->
 	</PossibleCommands>
-</StandardLocation>
+</Location>

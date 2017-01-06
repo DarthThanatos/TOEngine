@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<Quest id="1" key="Quest1b">
+	<Description>[QUEST]Sprzedawca patrzy ku Tobie, w jego spojrzeniu widzisz wdziecznosc. $Dziekuje Ci. Mam dla Ciebie nagrode$</Description>
+	<ConditionToStart>Quest1a</ConditionToStart>
+	<CorrectAnswer>[QUEST]Odbierz nagrode</CorrectAnswer>
+	<CommentAfterCompletion>Niech Ci sie wiedzie!</CommentAfterCompletion>
+	<Reward>
+		<Name>Reward</Name>
+	</Reward>
+	<ActionsReactions>
+		<ActionReaction>
+			<Action>[QUEST]Odbierz nagrode</Action>
+			<Reaction>				
+				<Method>
+					<Name>GrantReward</Name>
+					<Arg>Prosze bardzo!</Arg>
+				</Method>
+			</Reaction>
+		</ActionReaction>
+	</ActionsReactions>	
+	<PossibleCommands>
+		<Text>[QUEST]Odbierz nagrode Quest1b</Text>
+	</PossibleCommands>
+</Quest>

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<Element id="1" key="Quest1Object">
-	<Description>Przedmiot zwiazany z Quest1</Description>
+<NPC id="1" key="sciana">
+	<Description>Dziwna sciana stoi przed toba, odpada z niej tynk, obok przebiega dziurawa rynna</Description>
 	
 	<ActionsReactions>
 		<ActionReaction>
@@ -8,7 +8,7 @@
 			<Reaction>
 				<Method>
 					<Name>Communicate</Name>
-					<Arg>To jest przedmiot zwiazany z Quest1</Arg>
+					<Arg>To dziwna sciana</Arg>
 				</Method>
 			</Reaction>
 		</ActionReaction>
@@ -17,15 +17,15 @@
 			<Reaction>
 				<Method>
 					<Name>Communicate</Name>
-					<Arg>Przedmiot jest cieply w dotyku</Arg>
+					<Arg>Faktura sciany przyprawia Cie o dreszcze</Arg>
 				</Method>
 			</Reaction>
 		</ActionReaction>
 	</ActionsReactions>
-	
-		
+			
 	<PossibleCommands>
-		<Text>przygladnij sie Quest1Object</Text>
-		<Text>dotknij Quest1Object</Text>
+		<Text>przygladnij sie sciana</Text>
+		<Text>dotknij sciana</Text>
 	</PossibleCommands>
-</Element>
+	<Quests></Quests>
+</NPC>

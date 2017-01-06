@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<Quest id="1" key="Quest1a">
+	<Description>[QUEST]Sprzedawca patrzy ku Tobie, spostrzegajac interesujacy go przedmiot. $Czy moglbys mi dac ten przedmiot?$</Description>
+	<ConditionToStart>Quest1</ConditionToStart>
+	<CorrectAnswer>[QUEST]Prosze bardzo</CorrectAnswer>
+	<CommentAfterCompletion>Dziekuje Ci! Mam dla Ciebie nagrode!</CommentAfterCompletion>
+	<ActionsReactions>
+		<ActionReaction>
+			<Action>[QUEST]Prosze bardzo</Action>
+			<Reaction>				
+				<Method>
+					<Name>GiveQuestItem</Name>
+					<Arg>Quest1Object</Arg>
+				</Method>
+			</Reaction>
+		</ActionReaction>
+	</ActionsReactions>	
+	<PossibleCommands>
+		<Text>[QUEST]Prosze bardzo Quest1a</Text>
+	</PossibleCommands>
+</Quest>

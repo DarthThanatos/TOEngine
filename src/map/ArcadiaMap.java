@@ -7,7 +7,6 @@ import persistence.Hero;
 import commands.Command;
 import commands.InteractionResult;
 import commands.MovementResult;
-import map.element.Element;
 import map.location.Location;
 import map.npc.NPC;
 
@@ -31,23 +30,12 @@ public class ArcadiaMap implements IMap {
 	}
 
 	@Override
-	public Element getElementInLocation(int locationId, int elementId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public void addLocation(Location location) {
 		locations.put(location.getId(), location);
 	}
 
 	@Override
 	public void addNPC(NPC npc) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void addElement(Element element) {
 		// TODO Auto-generated method stub
 	}
 
@@ -75,7 +63,7 @@ public class ArcadiaMap implements IMap {
 			Location newLocation = (Location)oldLocation.getClass()
 					.getMethod("get" + languageDict.get(way))
 					.invoke(oldLocation);
-			MovementResult res =  new MovementResult(hero,newLocation.toString(), true);
+			MovementResult res =  new MovementResult(hero,newLocation.toString(hero), true);
 			oldLocation.deleteHero(hero);
 			newLocation.addHero(hero);
 			hero.setLocationId(newLocation.getId());
@@ -94,7 +82,7 @@ public class ArcadiaMap implements IMap {
 		String key = elems[elems.length - 1];
 		// help me please root -> [help me please, root]
 		for (int  i = 0; i < elems.length - 1; i++) {command += elems[i]; if(i <= elems.length - 1 - 2 ) command += " ";}
-		return locations.get(hero.getLocationId()).executeCommand(hero, key, command);
+		return locations.get(hero.getLocationId()).execute(hero, key, command);
 	}
 
 }

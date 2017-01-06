@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<Quest id="1" key="Quest1">
+	<Description>[QUEST]Nawoluje ku Tobie niezidentyfikowany glos: $Kosci swiata patrza sie ku niebu w karmazynowa noc. Czym jestem?$</Description>
+	<ConditionToStart>any</ConditionToStart>
+	<CorrectAnswer>[QUEST]Jestes gorami</CorrectAnswer>
+	<CommentAfterCompletion>Teraz zanieees to na zaaachod, Wedrowcze!</CommentAfterCompletion>
+	<Reward>
+		<Name>Quest1Object</Name>
+	</Reward>
+	<ActionsReactions>
+		<ActionReaction>
+			<Action>[QUEST]Jestes wiatrem</Action>
+			<Reaction>				
+				<Method>
+					<Name>Communicate</Name>
+					<Arg>[QUEST]Zleeee!!!</Arg>
+				</Method>
+			</Reaction>
+		</ActionReaction>
+		<ActionReaction>
+			<Action>[QUEST]Jestes piaskiem</Action>
+			<Reaction>				
+				<Method>
+					<Name>Communicate</Name>
+					<Arg>[QUEST]Zleeee!!!</Arg>
+				</Method>
+			</Reaction>
+		</ActionReaction>
+		<ActionReaction>
+			<Action>[QUEST]Jestes gorami</Action>
+			<Reaction>				
+				<Method>
+					<Name>GrantReward</Name>
+					<Arg>[QUEST]Dobrzeeee!!!</Arg>
+				</Method>
+			</Reaction>
+		</ActionReaction>
+	</ActionsReactions>
+	<PossibleCommands>
+		<Text>[QUEST]Jestes gorami Quest1</Text>
+		<Text>[QUEST]Jestes wiatrem Quest1</Text>
+		<Text>[QUEST]Jestes piaskiem Quest1</Text>
+	</PossibleCommands>
+</Quest>

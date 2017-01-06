@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+
+<NPC id="1" key="questperson1">
+	<Description>Sprzedawca luster stoi przy swoim kramie. Wyglada na zaaferowanego. </Description>
+
+	<ActionsReactions>
+		<ActionReaction>
+			<Action>przygladnij</Action>
+			<Reaction>
+				<Method>
+					<Name>Communicate</Name>
+					<Arg>To sprzedawca luster</Arg>
+				</Method>
+			</Reaction>
+		</ActionReaction>
+		<ActionReaction>
+			<Action>dzien dobry</Action>
+			<Reaction>
+				<Method>
+					<Name>Communicate</Name>
+					<Arg>Sprzdawca kiwa glowa w Twoja strone. $Witaj$, odpowiada</Arg>
+				</Method>
+			</Reaction>
+		</ActionReaction>
+	</ActionsReactions>
+	
+	<PossibleCommands>
+		<Text>przygladnij questperson1</Text>
+		<Text>dzien dobry questperson1</Text>
+	</PossibleCommands>
+
+	<Quests>
+		<Quest>
+			<File>FileSystem\Locations\location1\Quests\Quest1a.xml</File>
+		</Quest>
+		
+		<Quest>
+			<File>FileSystem\Locations\location1\Quests\Quest1b.xml</File>
+		</Quest>
+	</Quests>
+	
+</NPC>

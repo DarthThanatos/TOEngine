@@ -1,18 +1,21 @@
 <?xml version="1.0"?>
-<GuessChamber id="2" key="guess1">
-   <Description>Przed Toba rozposciera sie mroczne pomieszczenie. Widzisz kamienne podniesienie u stop poteznej kamiennej figury przedstawiajacej Winogrona</Description>
+<Location id="2" key="guess1">
+   <Description>Przed Toba rozposciera sie mroczne pomieszczenie</Description>
    <Locations>
-	   <StandardLocation id="0">
+	   <Location id="0">
 	       <Direction>West</Direction>
 	       <File>FileSystem\Locations\root\root.xml</File>
-	   </StandardLocation>
-	   <StandardLocation id="3">
+	   </Location>
+	   <Location id="3">
 	       <Direction>East</Direction>
 	       <File>FileSystem\Locations\location3\Location3.xml</File>
-	   </StandardLocation>
+	   </Location>
    </Locations>
-   <Elements></Elements>
-   <NPCs></NPCs>
+   <NPCs>
+   		<NPC>
+   			<File>FileSystem\Locations\guess1\NPCs\Statua.xml</File>
+   		</NPC>
+   </NPCs>
 	
 	<ActionsReactions>
 		<ActionReaction>
@@ -26,51 +29,10 @@
 		</ActionReaction>
 	</ActionsReactions>
 	
-	<Quests>
-		<Quest>
-			<Name>Quest1</Name>
-			<Description>[QUEST]Nawoluje ku Tobie niezidentyfikowany glos: $Kosci swiata patrza sie ku niebu w karmazynowa noc. Czym jestem?$</Description>
-			<Reward>FileSystem\guess1\Elements\Quest1Object.xml</Reward>
-			<QuestActionsReactions>
-				<QuestActionReaction>
-					<QuestAction>[QUEST]Jestes wiatrem guess1</QuestAction>
-					<QuestReaction>				
-						<Method>
-							<Name>Communicate</Name>
-							<Arg>[QUEST]Zleeee!!!</Arg>
-						</Method>
-					</QuestReaction>
-				</QuestActionReaction>
-				<QuestActionReaction>
-					<QuestAction>[QUEST]Jestes piaskiem guess1</QuestAction>
-					<QuestReaction>				
-						<Method>
-							<Name>Communicate</Name>
-							<Arg>[QUEST]Zleeee!!!</Arg>
-						</Method>
-					</QuestReaction>
-				</QuestActionReaction>
-				<QuestActionReaction>
-					<QuestAction>[QUEST]Jestes gorami</QuestAction>
-					<QuestReaction>				
-						<Method>
-							<Name>QuestReward</Name>
-							<Arg>[QUEST]Dobrzeeee!!!</Arg>
-						</Method>
-					</QuestReaction>
-				</QuestActionReaction>
-			</QuestActionsReactions>
-			<QuestPossibleCommands>
-				<Text>[QUEST]Jestes gorami guess1</Text>
-				<Text>[QUEST]Jestes wiatrem guess1</Text>
-				<Text>[QUEST]Jestes piaskiem guess1</Text>
-			</QuestPossibleCommands>
-		</Quest>
-	</Quests>
-	
 	<PossibleCommands>
 		<Text>help guess1</Text>
 		<Text>idz zachod</Text>
+		<Text>idz wschod</Text>
 	</PossibleCommands>
 	
-</GuessChamber>
+</Location>

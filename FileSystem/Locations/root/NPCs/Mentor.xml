@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Element id="1" key="mentor">
+<NPC id="1" key="mentor">
 	<Description>Dziwny starzec stoi przed Toba, wpatrujac sie w Cb ze smutkiem. Podrapuje sie za uchem. Ma etykietke $Mentor$ przypieta do piersi</Description>
 
 	<ActionsReactions>
@@ -78,4 +78,5 @@ by uzyskac odpowiedz itd."</Arg>
 		<Text>wytlumacz co robic mentor</Text>
 		<Text>wytlumacz gdzie jestem mentor</Text>
 	</PossibleCommands>
-</Element>
+	<Quests></Quests>
+</NPC>

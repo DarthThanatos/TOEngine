@@ -91,7 +91,7 @@ class EngineTests {
         assertEquals(1,hero.getLocationId());
         assertEquals(map.getLocation(1), map.getLocation(hero.getLocationId()));
         String roomDesc = "Przed Toba rozposciera sie standardowe pomieszczenie mieszkalne.";
-        assertEquals(map.getLocation(hero.getLocationId()).getDescription(), roomDesc);
+        assertEquals(map.getLocation(hero.getLocationId()).getDescription(hero), roomDesc);
         action = "idz zachod";
         movRes = map.moveToLocation(hero,action); // after going west we want to go even further...
         assertEquals(movRes.getResultBool(),false);//... but we cannot
@@ -101,16 +101,16 @@ class EngineTests {
         movRes = map.moveToLocation(hero, "idz wschod");
         assertTrue(movRes.getResultBool());
         roomDesc = "Znajdujesz sie w poczatkowej lokacji zwanej root. Wpisz $help me root$ zeby wyswietlic pomoc ";
-        assertEquals(roomDesc, map.getLocation(0).getDescription());
+        assertEquals(roomDesc, map.getLocation(0).getDescription(hero));
         action = "idz wschod";
         movRes = map.moveToLocation(hero, action); // move to location 2
         assertTrue(movRes.getResultBool());
         roomDesc = "Przed Toba rozposciera sie mroczne pomieszczenie. Widzisz kamienne podniesienie u stop poteznej kamiennej figury przedstawiajacej Winogrona";
-        assertEquals(roomDesc, map.getLocation(2).getDescription());
+        assertEquals(roomDesc, map.getLocation(2).getDescription(hero));
         movRes = map.moveToLocation(hero,action); //move to location 3
         assertTrue(movRes.getResultBool());
         roomDesc = "Karczemna dzielnica rozposciera sie lasem szyldow i morzem glosow. Pijak stoi przed Toba wymiotujac. ";
-        assertEquals(roomDesc, map.getLocation(3).getDescription());                
+        assertEquals(roomDesc, map.getLocation(3).getDescription(hero));                
     }
     
     @Test
@@ -119,10 +119,10 @@ class EngineTests {
         // failures will be reported together.
     	Location root = map.getLocation(0);
     	String key = "root", command = "krzyknij w", expectedResult = "Odpowiada Ci glucha cisza"; 
-    	InteractionResult intRes = root.executeCommand(hero, key, command);
+    	InteractionResult intRes = root.execute(hero, key, command);
     	assertEquals(expectedResult, intRes.getResultTxt());
     	key = "sciana"; command = "przygladnij sie"; expectedResult = "To dziwna sciana";
-    	intRes = root.executeCommand(hero, key, command);
+    	intRes = root.execute(hero, key, command);
     	assertEquals(expectedResult, intRes.getResultTxt());
     }
     
